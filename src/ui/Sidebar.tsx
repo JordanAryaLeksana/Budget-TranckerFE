@@ -11,7 +11,6 @@ import {
   AiOutlineSolution,
 } from "react-icons/ai";
 import { profile, logout } from "@/services/auth";
-
 const Sidebar = () => {
   const rawPath = usePathname();
   const router = useRouter();
