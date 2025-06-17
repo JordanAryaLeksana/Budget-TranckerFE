@@ -72,7 +72,7 @@ export default function DashboardPage() {
         {/* top content */}
         <div className="flex justify-between items-start flex-wrap gap-2">
             <div>
-                <h2 className="text-3xl font-semibold">Wellcome Back, User! </h2>
+                <h2 className="text-3xl font-semibold">Welcome Back, {user.name || "User"}! </h2>
                 <p className="text-md mt-1 font-normal">
                     Insights at a glance: empowering your financial journey.
                 </p>
