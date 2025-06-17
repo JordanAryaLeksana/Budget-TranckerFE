@@ -1,7 +1,0 @@
-{
-  "/_app": "pages/_app.js",
-  "/_error": "pages/_error.js",
-  "/AuthPage": "pages/AuthPage.js",
-  "/TransactionForm": "pages/TransactionForm.js",
-  "/_document": "pages/_document.js"
-}
