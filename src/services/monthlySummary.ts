@@ -63,8 +63,8 @@ export const generateMonthlySummaries = async () => {
     try {
         const response = await api.post(`/monthly-summaries/generate`,{}, {
             headers: getTokenHeader(),
+            
         });
-        console.log("Generate Monthly Summary Response:", response.data);
         return response.data;
     } catch (error) {
         handleApiError(error, "Failed to fetch monthly summaries");

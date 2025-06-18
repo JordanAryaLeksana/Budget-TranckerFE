@@ -61,6 +61,7 @@ const AuthPage = () => {
             if (error instanceof Error) {
                 setErrors({ general: error.message })
             }
+            console.log("Error:", error);
         } finally {
             setLoading(false)
         }
