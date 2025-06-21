@@ -60,10 +60,10 @@ export const deleteMonthlySummaries = async (id: number) => {
     }
 }
 export const generateMonthlySummaries = async () => {
+    const header = getTokenHeader();
     try {
         const response = await api.post(`/monthly-summaries/generate`,{}, {
-            headers: getTokenHeader(),
-            
+            headers: header,
         });
         return response.data;
     } catch (error) {

@@ -66,7 +66,7 @@ export default function SummaryPage() {
         setLoading(true)
         try {
             const response = await generateMonthlySummaries()
-            console.log(response)   
+            console.log(response)
             if (response.success && response.data) {
                 setResponse({
                     summary: response.data.summary,
@@ -82,6 +82,7 @@ export default function SummaryPage() {
                     message: error.message,
                     type: "danger",
                 })
+                console.log("Error generating summary:", error.message)
             } else {
                 setErrorModal({
                     message: "Terjadi Kesalahan",
@@ -120,13 +121,13 @@ export default function SummaryPage() {
                         <div className="bg-white rounded-xl p-4 shadow">
                             <h3 className="text-lg font-semibold mb-2">Recommendation</h3>
                             <ul className="list-disc list-inside space-y-1 text-gray-700">
-                               {response.recomendations.map((item, index) => (
+                                {response.recomendations.map((item, index) => (
                                     <li key={index} className="flex items-start gap-2">
                                         <span className="text-yellow-600">•</span>
                                         {item}
                                     </li>
                                 )
-                               )}
+                                )}
                             </ul>
                         </div>
                     )}
@@ -144,17 +145,24 @@ export default function SummaryPage() {
                     </p>
                 </div>
             )}
-            {!response && !loading && !alreadyGenerated &&(
+            {!response && !loading && !alreadyGenerated && (
                 <div className="text-gray-500 text-sm">
-                    Click this Button <b>&quot;Generate Summary&quot;</b> for generate your financial summary. 
+                    Click this Button <b>&quot;Generate Summary&quot;</b> for generate your financial summary.
                 </div>
             )}
             {errorModal && (
                 <Modal
                     type="danger"
                     message={errorModal.message}
-                    onOk={ () => errorModal.onOk}
+                    onOk={() => {
+                        if (errorModal.onOk) {
+                            errorModal.onOk()
+                        } else {
+                            setErrorModal(null) 
+                        }
+                    }}
                 />
+
             )}
         </div>
     )
